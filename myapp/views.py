@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from .models import Blog
-from .forms import CommentForm
+from .forms import CommentForm, BlogForm
 
 # Create your views here.
 def home_page(request):
@@ -37,4 +37,10 @@ def blog_detail(request, blog_id):
 def contact(request):
     return render(request, 'contact.html')
 
+def add_blog(request):
+     form = BlogForm
+     context = {
+         'form': form
+     }
+     return render(request, 'add_blog.html', context)
 

@@ -6,7 +6,7 @@
             <div class="container py-5 px-2 bg-white">
                 <div class="row px-4">
                     <div class="col-12">
-                        <img class="img-fluid mb-4" src="{{ blog.image }}" alt="Image">
+                        <img src="{{ blog.image }}" alt="Image" style="width: 300px; height: auto; margin-bottom: 16px;">
                         <h2 class="mb-3 font-weight-bold">{{ blog.title }}</h2>
                         <div class="d-flex">
                             <p class="mr-3 text-muted"><i class="fa fa-calendar-alt"></i> {{ blog.created_at }}</p>
@@ -30,7 +30,7 @@
                             <img src="{% static 'img/user.jpg' %}" alt="Image" class="mr-3 mt-1 rounded-circle" style="width:60px;">
                             <div class="media-body">
                                 <h4>{{ comment.name }} <small><i>{{ comment.created_at }}</i></small></h4>
-                                <p>{{ comment.text }}
+                                <p>{{ comment.text | linebreaks  }}
                                 </p>
                             </div>
                         </div>
