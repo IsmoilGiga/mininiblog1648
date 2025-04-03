@@ -1,19 +1,20 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
+  
 
             <!-- Blog Detail Start -->
             <div class="container py-5 px-2 bg-white">
                 <div class="row px-4">
                     <div class="col-12">
-                        <img src="{{ blog.image }}" alt="Image" style="width: 300px; height: auto; margin-bottom: 16px;">
+                        <img class="img-fluid mb-4" src="{{ blog.image }}" alt="Image">
                         <h2 class="mb-3 font-weight-bold">{{ blog.title }}</h2>
                         <div class="d-flex">
                             <p class="mr-3 text-muted"><i class="fa fa-calendar-alt"></i> {{ blog.created_at }}</p>
                             <p class="mr-3 text-muted"><i class="fa fa-folder"></i> Admin</p>
                             <p class="mr-3 text-muted"><i class="fa fa-comments"></i> {{ blog.comment_count }} ta kommentariya</p>
                         </div>
-                        <p>{{ blog.description }}</p>
+                        <p>{{ blog.description | linebreaks }}</p>
                         
                         
                     <div class="col-12 py-4">
@@ -30,7 +31,7 @@
                             <img src="{% static 'img/user.jpg' %}" alt="Image" class="mr-3 mt-1 rounded-circle" style="width:60px;">
                             <div class="media-body">
                                 <h4>{{ comment.name }} <small><i>{{ comment.created_at }}</i></small></h4>
-                                <p>{{ comment.text | linebreaks  }}
+                                <p>{{ comment.text }}
                                 </p>
                             </div>
                         </div>
@@ -58,5 +59,5 @@
                 </div>
             </div>
             <!-- Blog Detail End -->
-
-{% endblock content %}
+                
+{% endblock %}

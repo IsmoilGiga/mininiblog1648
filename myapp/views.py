@@ -1,7 +1,6 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from .models import Blog
 from .forms import CommentForm, BlogForm
-
 # Create your views here.
 def home_page(request):
     bloglar = Blog.objects.all()
@@ -34,13 +33,22 @@ def blog_detail(request, blog_id):
     }
     return render(request, 'single.html', context)
 
-def contact(request):
-    return render(request, 'contact.html')
 
 def add_blog(request):
-     form = BlogForm
-     context = {
-         'form': form
-     }
-     return render(request, 'add_blog.html', context)
+    if request.method == 'POST':
+        form = BlogForm(request.POST, request.FILES)
+        if form.is_valid():
+            blog = form.save(commit=False)
+            blog.author = request.user
+            blog.save()
+            return redirect('home')
+    else:
+        form = BlogForm()
 
+    context = {
+        'form': form
+    }
+    return render(request, 'add_blog.html', context)    
+    
+def contact(request):
+    return render(request, 'contact.html')

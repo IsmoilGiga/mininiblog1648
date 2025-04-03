@@ -6,7 +6,7 @@ class CommentForm(forms.ModelForm):
     class Meta:
         model = Comment
         fields = ('name', 'text')
-
+        
 
 class BlogForm(forms.ModelForm):
     class Meta:
@@ -24,8 +24,9 @@ class BlogForm(forms.ModelForm):
                 'rows': 5,
                 'style': 'border-radius: 8px; padding: 10px;'
             }),
-            'image': forms.ClearableFileInput(attrs={
+            'image_url': forms.TextInput(attrs={
                 'class': 'form-control',
+                'placeholder': 'Rasm URL manzilini kiriting',
                 'style': 'border-radius: 8px; padding: 10px;'
             })
         }

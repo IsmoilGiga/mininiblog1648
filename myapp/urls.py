@@ -7,7 +7,7 @@ urlpatterns = [
     path('', home_page, name='home'),
     path('blog/<int:blog_id>/', blog_detail, name='blog_detail'),
     path('contact/', contact, name='contact'),
-    path('add_blog', add_blog, name='blog_qoshish')
+    path('add_blog/', add_blog, name='blog_qoshish')
 ]
 
 if settings.DEBUG:

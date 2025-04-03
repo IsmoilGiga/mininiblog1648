@@ -1,5 +1,6 @@
 from django.contrib import admin
 from .models import Blog, Comment, BlogLike, CommentLike
+
 # Register your models here.
 
 admin.site.register(BlogLike)
@@ -16,3 +17,4 @@ class BlogAdmin(admin.ModelAdmin):
 class CommentAdmin(admin.ModelAdmin):
     list_display = ('text', 'name', 'blog_id', 'created_at')
     search_fields = ('text', 'name', 'blog_id__title')
+    
